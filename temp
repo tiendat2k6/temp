@@ -1,1 +1,364 @@
-https://docs.google.com/presentation/d/1iY6wkBLKpLd10dZIu3aB4gpZ23rQrZRUWQU3oo50YaM/edit
+roadsqua
+
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+#include <iomanip>
+#include <cmath>
+#include <cstring>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+
+#include <vector>
+#include <set>
+#include <bitset>
+#include <map>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <string>
+#include <unordered_map>
+
+#pragma GCC optimize("O2")
+
+using str = std::string;
+using ull = unsigned long long;
+using ii = std::pair <int, int>;
+
+#define X first
+#define Y second
+#define endl '\n'
+#define pb push_back
+//#define int long long
+#define And << " " <<
+#define len(x) (long long)x.length()
+#define reset(a, x) memset(a, x, sizeof(a))
+#define End cout << '\n' << "\n"; return 0;
+#define Fu(i, l, r) for (int i = l; i <= r; i++)
+#define enter_arr(x, n) Fu(i, 1, n) cin >> x[i];
+#define File(x) freopen(x".INP", "r", stdin); freopen(x".OUT", "w", stdout);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace std;
+
+const int N = 1e2 + 5;
+
+/*-------------// Variables \--------------*/
+    int n, m;
+    string d[N][N];
+/*------------------------------------------*/
+
+string add(string a, string b)
+{
+    int     du  = 0;
+    int     mid = 0;
+    string  res = "";
+    a.insert(0, max(0, (int) (b.length() - a.length())), '0');
+    b.insert(0, max(0, (int) (a.length() - b.length())), '0');
+    for (int i = a.length()-1; i >= 0; --i)
+    {
+        mid = ((int) a[i] - 48) + ((int) b[i] - 48) + du;
+        du  = mid / 10;
+        res = (char) (mid % 10 + 48) + res;
+    }
+    if (du > 0) res = "1" + res;
+    return res;
+}
+
+void solve()
+{
+    cin >> n >> m;
+
+    Fu(i, 1, n) Fu(j, 1, m)
+    {
+        if (i == 1 && j == 1) d[i][j] = "1";
+        else d[i][j] = add(d[i-1][j], d[i][j-1]);
+    }
+
+    cout << d[n][m];
+}
+
+int32_t main()
+{
+    Fast;
+    File("roadsqua")
+    //  freopen("test.inp", "r", stdin);
+    // int t; cin >> t; while(t--)
+        solve();
+    End;
+}
+
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+#include <iomanip>
+#include <cmath>
+#include <cstring>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+ 
+#include <vector>
+#include <set>
+#include <bitset>
+#include <map>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <string>
+#include <unordered_map>
+
+#pragma GCC optimize("O2")
+ 
+using str = std::string;
+using ull = unsigned long long;
+using ii = std::pair <int, int>;
+ 
+#define X first
+#define Y second
+#define endl '\n'
+#define pb push_back
+#define int long long
+#define And << " " <<
+#define len(x) (long long)x.length()
+#define reset(a, x) memset(a, x, sizeof(a))
+#define End cout << '\n' << "\n"; return 0;
+#define Fu(i, l, r) for (int i = l; i <= r; i++)
+#define enter_arr(x, n) Fu(i, 1, n) cin >> x[i];
+#define File(x) freopen(x".INP", "r", stdin); freopen(x".OUT", "w", stdout);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace std;
+
+const int N = 1e4 + 5;
+
+/*-------------// Variables \--------------*/
+    int n, d[N];
+    bool a[N][N];
+/*------------------------------------------*/
+
+void solve() 
+{
+    cin >> n;
+
+    int u, v;
+    while(cin >> u >> v) a[u][v] = true;
+
+    d[1] = 1;
+    for(int i = 2; i <= n; i++)
+    {
+        for(int j = 1; j < i; j++)
+            if (a[j][i]) d[i] += d[j];
+    }
+
+    cout << d[n];
+}
+
+int32_t main() 
+{
+    Fast;
+    File("WAYSHUGO")
+    // freopen("test.inp", "r", stdin);
+    // int t; cin >> t; while(t--)
+        solve();
+    End;
+}
+
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+#include <iomanip>
+#include <cmath>
+#include <cstring>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+ 
+#include <vector>
+#include <set>
+#include <bitset>
+#include <map>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <string>
+#include <unordered_map>
+
+#pragma GCC optimize("O2")
+ 
+using str = std::string;
+using ull = unsigned long long;
+using ii = std::pair <int, int>;
+ 
+#define X first
+#define Y second
+#define endl '\n'
+#define pb push_back
+#define int long long
+#define And << " " <<
+#define len(x) (long long)x.length()
+#define reset(a, x) memset(a, x, sizeof(a))
+#define End cout << '\n' << "\n"; return 0;
+#define Fu(i, l, r) for (int i = l; i <= r; i++)
+#define enter_arr(x, n) Fu(i, 1, n) cin >> x[i];
+#define File(x) freopen(x".INP", "r", stdin); freopen(x".OUT", "w", stdout);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace std;
+
+const int mx = 1e6;
+const int N = 1e5 + 5;
+
+/*-------------// Variables \--------------*/
+    bool p[mx+5];
+    int n, a[N], d[N], bit[mx+5];
+/*------------------------------------------*/
+
+void update(int u, int val)
+{
+    while(u > 0)
+    {
+        bit[u] = max(bit[u], val);
+        u -= u & (-u);
+    }
+}
+
+int get_val(int u)
+{
+    int ans = 0;
+    while(u <= mx)
+    {
+        ans = max(ans, bit[u]);
+        u += u & (-u);
+    }
+    return ans;
+}
+
+void precompute()
+{
+    memset(p, true, sizeof(p));
+    p[1] = false;
+
+    for(int i = 2; i <= mx; i++)
+    {
+        if (!p[i]) continue;
+
+        for(int j = i*i; j <= mx; j += i)
+            p[j] = false;
+    }
+}
+
+void solve() 
+{
+    precompute();
+    cin >> n; enter_arr(a, n);
+
+    int ans = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        if (!p[a[i]]) continue;
+
+        d[i] = get_val(a[i]+1) + 1;
+        update(a[i], d[i]);
+
+        ans = max(ans, d[i]);
+    }
+
+    cout << ans;
+}
+
+int32_t main() 
+{
+    Fast;
+    File("SPECPACK")
+    // freopen("test.inp", "r", stdin);
+    // int t; cin >> t; while(t--)
+        solve();
+    End;
+}
+
+
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+#include <iomanip>
+#include <cmath>
+#include <cstring>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+
+#include <vector>
+#include <set>
+#include <bitset>
+#include <map>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <string>
+#include <unordered_map>
+
+#pragma GCC optimize("Ofast")
+
+using str = std::string;
+using ull = unsigned long long;
+using ii = std::pair <int, int>;
+
+#define X first
+#define Y second
+#define endl '\n'
+#define pb push_back
+#define int long long
+#define And << " " <<
+#define len(x) (long long)x.length()
+#define reset(a, x) memset(a, x, sizeof(a))
+#define End cout << '\n' << "\n"; return 0;
+#define Fu(i, l, r) for (int i = l; i <= r; i++)
+#define enter_arr(x, n) Fu(i, 1, n) cin >> x[i];
+#define File(x) freopen(x".INP", "r", stdin); freopen(x".OUT", "w", stdout);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace std;
+
+const int N = 1e4 + 5;
+
+/*-------------// Variables \\--------------*/
+    int n, a[N], b[N];
+    vector <int> d1(N), d2(N);
+/*------------------------------------------*/
+
+void process(int a[], vector<int> &d)
+{
+    for(int i = 1; i <= n; i++)
+    {
+        d[i] = 1;
+        for(int j = 1; j < i; j++)
+            if (a[j] > a[i]) d[i] = max(d[i], d[j]+1);
+    }
+}
+
+void solve()
+{
+    cin >> n;
+
+    for(int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+        b[n-i+1] = a[i];
+    }
+
+    int ans = 0;
+    process(a, d1); process(b, d2);
+
+    for(int i = 1; i <= n; i++)
+        ans = max(ans, d1[i] + d2[n-i+1] - 1);
+
+    cout << ans;
+}
+
+int32_t main()
+{
+    Fast;
+    File("ROWFIGUV")
+    //  freopen("test.inp", "r", stdin);
+    // int t; cin >> t; while(t--)
+        solve();
+    End;
+}
