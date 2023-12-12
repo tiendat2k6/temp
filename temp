@@ -1,1 +1,86 @@
 https://731d-113-174-83-192.ngrok-free.app
+
+
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+#include <iomanip>
+#include <cmath>
+#include <cstring>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+ 
+#include <vector>
+#include <set>
+#include <bitset>
+#include <map>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <string>
+#include <unordered_map>
+
+#pragma GCC optimize("O2")
+ 
+using str = std::string;
+using ull = unsigned long long;
+using ii = std::pair <int, int>;
+ 
+#define X first
+#define Y second
+#define endl '\n'
+#define pb push_back
+#define int long long
+#define And << " " <<
+#define len(x) (long long)x.length()
+#define reset(a, x) memset(a, x, sizeof(a))
+#define End cout << '\n' << "\n"; return 0;
+#define Fu(i, l, r) for (int i = l; i <= r; i++)
+#define enter_arr(x, n) Fu(i, 1, n) cin >> x[i];
+#define File(x) freopen(x".INP", "r", stdin); freopen(x".OUT", "w", stdout);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace std;
+
+const int N = 1e2 + 5;
+
+/*-------------// Variables \\--------------*/
+    int n; string s;
+    map <string, bool> d;
+/*------------------------------------------*/
+
+void solve() 
+{
+    cin >> n >> s; s = ' ' + s;
+
+    int ans = 0;
+    for(int len = 1; len <= n; len++)
+    {
+        d.clear();
+        bool ok = true;
+
+        for(int i = 1; i <= n; i++)
+        {
+            string t = "";
+            for(int j = i; j <= i+len-1; j++)
+                t = t + s[j];
+
+            if (d[t]) ok = false;
+            d[t] = true;
+        }
+
+        if (ok) {ans = len; break;}
+    }
+
+    cout << ans;
+}
+
+int32_t main() 
+{
+    Fast;
+    File("DIFFSSTR")
+    // freopen("test.inp", "r", stdin);
+    // int t; cin >> t; while(t--)
+        solve();
+    End;
+}
