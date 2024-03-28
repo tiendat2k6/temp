@@ -145,3 +145,76 @@ int32_t main()
         solve();
     End;
 }
+
+
+Bai 3:
+
+#include <bits/stdc++.h>
+
+#pragma GCC optimize("Ofast")
+
+using str = std::string;
+using ull = unsigned long long;
+using ii = std::pair <int, int>;
+
+#define X first
+#define Y second
+#define endl '\n'
+#define pb push_back
+#define int long long
+#define And << " " <<
+#define len(x) (long long)x.length()
+#define reset(a, x) memset(a, x, sizeof(a))
+#define End cout << '\n' << "\n"; return 0;
+#define Fu(i, l, r) for (int i = l; i <= r; i++)
+#define enter_arr(x, n) Fu(i, 1, n) cin >> x[i];
+#define File(x) freopen(x".INP", "r", stdin); freopen(x".OUT", "w", stdout);
+#define Fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace std;
+
+const int N = 1e2 + 5;
+
+/*-------------// Variables \\--------------*/
+    int n;
+    string s, d[N];
+/*------------------------------------------*/
+
+string sum(string a, string b)
+{
+    int     du  = 0;
+    int     mid = 0;
+    string  res = "";
+    a.insert(0ll, max(0ll, (int) (b.length() - a.length())), '0');
+    b.insert(0ll, max(0ll, (int) (a.length() - b.length())), '0');
+    for (int i = a.length()-1; i >= 0; --i)
+    {
+        mid = ((int) a[i] - 48) + ((int) b[i] - 48) + du;
+        du  = mid / 10;
+        res = (char) (mid % 10 + 48) + res;
+    }
+    if (du > 0) res = "1" + res;
+    return res;
+}
+
+void solve()
+{
+    cin >> n >> s; s = ' ' + s;
+
+    d[0] = "1";
+    d[1] = ((s[1] == '1')? "1" : "0");
+
+    for(int i = 2; i <= n; i++)
+        d[i] = ((s[i] == '1')? sum(d[i-2], d[i-1]) : "0");
+
+    cout << d[n];
+}
+
+int32_t main()
+{
+    Fast;
+     File("FLIGHT2")
+//     freopen("test.inp", "r", stdin);
+    // int t; cin >> t; while(t--)
+        solve();
+    End;
+}
