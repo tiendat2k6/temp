@@ -1,3 +1,5 @@
+Bai 1:
+
 #include <iostream>
 #include <stdio.h>
 #include <algorithm>
@@ -7,7 +9,7 @@
 #include <climits>
 #include <cstdlib>
 #include <ctime>
- 
+
 #include <vector>
 #include <set>
 #include <bitset>
@@ -18,12 +20,12 @@
 #include <string>
 #include <unordered_map>
 
-#pragma GCC optimize("O2")
- 
+#pragma GCC optimize("Ofast")
+
 using str = std::string;
 using ull = unsigned long long;
 using ii = std::pair <int, int>;
- 
+
 #define X first
 #define Y second
 #define endl '\n'
@@ -39,52 +41,26 @@ using ii = std::pair <int, int>;
 #define Fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
 
-const int N = 1e3 + 5;
+const int N = 1e2 + 5;
 
 /*-------------// Variables \\--------------*/
-    
+
 /*------------------------------------------*/
 
-int sdc(int a)
+void solve()
 {
-    if (a < 10) return 1;
-    if (a == 1000) return a;
+    int x1, x2, y1, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
 
-    if (a >= 10 && a < 100)
-    {
-        if (a % 10 == a / 10) return 11;
-        else return 10;
-    }
-
-    int y = (a/10) % 10;
-    int x = a/100, z = a % 10;
-
-    if (x == y && y == z) return 111;
-    if (x != y && y != z && z != x) return 102;
-
-    if (x == y) return 110;
-    if (x == z) return 101;
-
-    return 100;
+    cout << __gcd(abs(x2-x1), abs(y2-y1)) - 1 << endl;
 }
 
-void solve() 
-{
-    int n; cin >> n;
-
-    int ans = 0;
-    for(int i = 1; i <= n; i++)
-        ans += sdc(i);
-
-    cout << ans;
-}
-
-int32_t main() 
+int32_t main()
 {
     Fast;
-    File("DANGCAU")
-    // freopen("test.inp", "r", stdin);
-    // int t; cin >> t; while(t--)
+     File("SDNGUYEN")
+//     freopen("test.inp", "r", stdin);
+     int t; cin >> t; while(t--)
         solve();
     End;
 }
